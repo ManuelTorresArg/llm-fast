@@ -1,0 +1,11 @@
+# Override opcional: aceleración por GPU AMD (RX 5700, RDNA1) vía Vulkan (experimental en Ollama).
+# Uso: docker compose -f compose.yaml -f compose.vulkan.yaml up -d
+services:
+  ollama:
+    devices:
+      - /dev/dri:/dev/dri
+    group_add:
+      - "44"   # GID de video en el host
+      - "990"  # GID de render en el host
+    environment:
+      OLLAMA_VULKAN: "1"

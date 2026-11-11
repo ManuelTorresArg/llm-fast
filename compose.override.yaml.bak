@@ -1,0 +1,10 @@
+# Generado por detectar.sh el 2026-11-09. Backend: vulkan.
+services:
+  ollama:
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      OLLAMA_VULKAN: "1"
+    group_add:
+      - "44"
+      - "990"

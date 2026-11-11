@@ -45,6 +45,14 @@ docker exec ollama ollama ps                  # muestra si corre en GPU o CPU
 ```
 Clientes compatibles con OpenAI: `base_url=http://10.0.2.2:11434/v1`, `api_key=ollama` (cualquier valor).
 
+## GUI para consultas
+```bash
+./gui.py                                   # http://127.0.0.1:8080, contra Ollama local
+./gui.py --ollama http://10.0.2.2:11434    # desde la VM
+./gui.py --host 0.0.0.0 --puerto 8080      # accesible desde otras máquinas
+```
+Chat con historial, selector de modelo, respuesta en streaming, botón para detener y tokens/s. Solo usa Python estándar: reenvía `/api/*` a Ollama, así que no hay problemas de CORS.
+
 ## Notas
 - El puerto 11434 queda abierto en todas las interfaces y **sin autenticación**. Docker se salta ufw.
   Para limitarlo, cambiá `0.0.0.0:11434` por la IP de una interfaz concreta en `compose.yaml`.
